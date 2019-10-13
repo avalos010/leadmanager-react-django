@@ -1,13 +1,18 @@
 import React,{Component, Fragment, useEffect} from 'react';
 import {  withAlert  } from 'react-alert';
+import {connect} from 'react-redux';
 
 
-function Alerts({alert}) {
+function Alerts(props) {
     useEffect(() => {
-        alert.show('Testing')
-    },[])
+    props.alert.show(props.errors.status)
+      
+    },[props.errors.status])
 
     return <Fragment />
 }
 
-export default withAlert()(Alerts);
+const mapStateToProps = state => ({errors: state.errors});
+
+const connectAlerts = connect(mapStateToProps)(Alerts);
+export default withAlert()(connectAlerts);

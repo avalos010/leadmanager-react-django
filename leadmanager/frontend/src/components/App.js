@@ -17,6 +17,8 @@ const alertOptions = {
   position: 'top center'
 }
 
+console.log(store.getState())
+
 class App extends Component {
   render() {
     return (
